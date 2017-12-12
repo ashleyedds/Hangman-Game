@@ -2,9 +2,9 @@ var wordList = ["TARHEELS", "WOLFPACK", "BLUEDEVILS", "EAGLES", "TIGERS", "SEMIN
 var lettersGuessed = [];
 
 //Generates random word from array
-var targetWord = wordList[Math.floor(Math.random()*wordList.length)];
+var targetWord = wordList[Math.floor(Math.random() * wordList.length)];
 
-console.log(targetWord); 
+console.log(targetWord);
 
 //Creates blanks to fill in with the target word
 var answerArray = [];
@@ -19,59 +19,61 @@ var remainingGuesses = 10;
 
 //HTML display
 var html = "<p>Press any key to get started!</p>" +
-"<br>" +
-"<p>Wins</p>" +
-"<br>" +
-"<p>Current word" + 
-"<br>" +
-answerArray.join ("") + "</p>" +
-"<br>" +
-"<p>Number of guesses remaining" +
-"<br>" +
-remainingGuesses + "</p>" +
-"<br>" +
-"<p>Letters already guessed</p>"
+    "<br>" +
+    "<p>Wins</p>" +
+    "<br>" +
+    "<p>Current word" +
+    "<br>" +
+    answerArray.join("") + "</p>" +
+    "<br>" +
+    "<p>Number of guesses remaining" +
+    "<br>" +
+    remainingGuesses + "</p>" +
+    "<br>" +
+    "<p>Letters already guessed</p>"
 
 document.querySelector('#game').innerHTML = html;
 
 console.log(answerArray.join(""));
 
 //Captures user's keypress
-document.onkeyup = function() {
+document.onkeyup = function () {
     var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
     var correctGuess = false;
 
-    for (var j = 0; j < targetWord.length; j++){
+    for (var j = 0; j < targetWord.length; j++) {
         if (targetWord[j] === userGuess) {
             answerArray[j] = userGuess;
             remainingLetters--;
             correctGuess = true;
-        }    
+        }
     }
 
-    if (correctGuess) {
+    if (correctGuess === false) {
         remainingGuesses--;
-        console.log('remaining =' + remainingGuesses)
+        if (lettersGuessed.indexOf(userGuess) === -1) {
+            lettersGuessed.push(userGuess)
+        }
+
     }
 
-    lettersGuessed.push(userGuess);
 
     //HTML display
     var html = "<p>Press any key to get started!</p>" +
-    "<br>" +
-    "<p>Wins</p>" +
-    "<br>" +
-    "<p>Current word" + 
-    "<br>" +
-    answerArray.join ("") + "</p>" +
-    "<br>" +
-    "<p>Number of guesses remaining" +
-    "<br>" +
-    remainingGuesses + "</p>" +
-    "<br>" +
-    "<p>Letters already guessed" +
-    "<br>" +
-    lettersGuessed + "</p>"
+        "<br>" +
+        "<p>Wins</p>" +
+        "<br>" +
+        "<p>Current word" +
+        "<br>" +
+        answerArray.join("") + "</p>" +
+        "<br>" +
+        "<p>Number of guesses remaining" +
+        "<br>" +
+        remainingGuesses + "</p>" +
+        "<br>" +
+        "<p>Letters already guessed" +
+        "<br>" +
+        lettersGuessed + "</p>"
 
     document.querySelector('#game').innerHTML = html;
 };
