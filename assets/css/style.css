@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-image: url("img/court.png");
+    background-size: cover;
+}
+
+/*Main header*/
+.mainHeader {
+    position: relative;
+    left: 35%;
+    z-index: -1;
+}
+
+.subHeader {
+    position: absolute;
+    top: 5%;
+    right: 25%;
+}
+
+/*Content area*/
+.wrapper {
+    position: absolute;
+    left: 18%;
+    margin: 50px;
+    border: solid 3px blue;
+}
+.photos {
+    float: left;
+}
+.gameContent {
+    float: left;
+    margin: 30px;
+    height: 500px;
+    width: 500px;
+    padding: 30px;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Graduate', cursive;
+    background-color: rgba(255, 255, 255, 0.71);
+
+}
+
+.basePhoto {
+    height: 300px;
+    width: 560px;
+    padding: 10px;
+}
