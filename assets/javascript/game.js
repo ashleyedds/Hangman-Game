@@ -1,28 +1,31 @@
 var wordList = ["TARHEELS", "WOLFPACK", "BLUEDEVILS", "EAGLES", "TIGERS", "SEMINOLES", "CARDINALS", "FIGHTINGIRISH", "ORANGE", "DEMONDEACONS", "YELLOWJACKETS", "HURRICANES", "PANTHERS", "CAVALIERS", "HOKIES"];
 var lettersGuessed = [];
+var answerArray = [];
+var remainingGuesses = 10;
+var wins = 0;
+
 
 //Generates random word from array
 var targetWord = wordList[Math.floor(Math.random() * wordList.length)];
 
 console.log(targetWord);
 
-//Creates blanks to fill in with the target word
-var answerArray = [];
-
+//Displays target as a series of blanks
 for (var i = 0; i < targetWord.length; i++) {
     answerArray[i] = "_ ";
 }
 
 var remainingLetters = targetWord.length;
 
-var remainingGuesses = 10;
 
 //HTML display
 var html = "<p>Press any key to get started!</p>" +
     "<br>" +
-    "<p>Wins</p>" +
+    "<p>Wins" +
     "<br>" +
-    "<p>Current word" +
+    wins + "</p>" +
+    "<br>" +
+    "<p id=>Current word" +
     "<br>" +
     answerArray.join("") + "</p>" +
     "<br>" +
@@ -33,8 +36,6 @@ var html = "<p>Press any key to get started!</p>" +
     "<p>Letters already guessed</p>"
 
 document.querySelector('#game').innerHTML = html;
-
-console.log(answerArray.join(""));
 
 //Captures user's keypress
 document.onkeyup = function () {
@@ -52,16 +53,27 @@ document.onkeyup = function () {
     if (correctGuess === false) {
         remainingGuesses--;
         if (lettersGuessed.indexOf(userGuess) === -1) {
-            lettersGuessed.push(userGuess)
+            lettersGuessed.push(userGuess);
         }
-
     }
 
+    //For losing
+    if (remainingGuesses === 0) {
+        alert("Too bad, you didn't get it this time.");
+        window.location.reload();
+        }
+    
+    //For winning
+    if (remainingLetters === 0){
+        wins++;
+        }
 
     //HTML display
     var html = "<p>Press any key to get started!</p>" +
         "<br>" +
-        "<p>Wins</p>" +
+        "<p>Wins" +
+        "<br>"+
+        wins + "</p>" +
         "<br>" +
         "<p>Current word" +
         "<br>" +
