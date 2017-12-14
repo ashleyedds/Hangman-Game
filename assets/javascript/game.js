@@ -4,19 +4,29 @@ var answerArray = [];
 var remainingGuesses = 10;
 var wins = 0;
 
-
 //Generates random word from array
 var targetWord = wordList[Math.floor(Math.random() * wordList.length)];
-
-console.log(targetWord);
 
 //Displays target as a series of blanks
 for (var i = 0; i < targetWord.length; i++) {
     answerArray[i] = "_ ";
 }
 
-var remainingLetters = targetWord.length;
+//Resets game on win
+function resetGame (){
+    remainingGuesses = 10;
+    lettersGuessed = [];
+    answerArray = [];
+    targetWord = wordList[Math.floor(Math.random() * wordList.length)]
+    remainingLetters = targetWord.length;
+    for (var i = 0; i < targetWord.length; i++) {
+        answerArray[i] = "_ ";
+    }
+}
 
+console.log(targetWord);
+
+var remainingLetters = targetWord.length;
 
 //HTML display
 var html = "<p>Press any key to get started!</p>" +
@@ -61,18 +71,81 @@ document.onkeyup = function () {
     if (remainingGuesses === 0) {
         alert("Too bad, you didn't get it this time.");
         window.location.reload();
-        }
-    
+    }
+
     //For winning
-    if (remainingLetters === 0){
+    if (remainingLetters === 0) {
         wins++;
+
+        switch (targetWord) {
+            case "TARHEELS":
+                document.getElementById("basePhoto").src = "assets/images/tarheels.jpg"
+                break;
+
+            case "BLUEDEVILS":
+                document.getElementById("basePhoto").src = "assets/images/bluedevils.jpg"
+                break;
+
+            case "CARDINALS":
+                document.getElementById("basePhoto").src = "assets/images/cardinals.png"
+                break;
+
+            case "CAVALIERS":
+                document.getElementById("basePhoto").src = "assets/images/cavaliers.png"
+                break;
+
+            case "DEMONDEACONS":
+                document.getElementById("basePhoto").src = "assets/images/demondeacons.png"
+                break;
+
+            case "EAGLES":
+                document.getElementById("basePhoto").src = "assets/images/eagles.jpg"
+                break;
+
+            case "FIGHTINGIRISH":
+                document.getElementById("basePhoto").src = "assets/images/fightingirish.jpg"
+                break;
+
+            case "HOKIES":
+                document.getElementById("basePhoto").src = "assets/images/hokies.png"
+                break;
+
+            case "HURRICANES":
+                document.getElementById("basePhoto").src = "assets/images/hurricanes.png"
+                break;
+
+            case "ORANGE":
+                document.getElementById("basePhoto").src = "assets/images/orange.png"
+                break;
+
+            case "PANTHERS":
+                document.getElementById("basePhoto").src = "assets/images/panthers.png"
+                break;
+
+            case "SEMINOLES":
+                document.getElementById("basePhoto").src = "assets/images/seminoles.png"
+                break;
+
+            case "TIGERS":
+                document.getElementById("basePhoto").src = "assets/images/tigers.png"
+                break;
+
+            case "WOLFPACK":
+                document.getElementById("basePhoto").src = "assets/images/wolfpack.jpg"
+                break;
+
+            case "YELLOWJACKETS":
+                document.getElementById("basePhoto").src = "assets/images/yellowjackets.png"
+                break;
         }
+        resetGame();
+    }
 
     //HTML display
     var html = "<p>Press any key to get started!</p>" +
         "<br>" +
         "<p>Wins" +
-        "<br>"+
+        "<br>" +
         wins + "</p>" +
         "<br>" +
         "<p>Current word" +

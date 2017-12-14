@@ -44,7 +44,7 @@ body {
 
 }
 
-.basePhoto {
+#basePhoto {
     height: 300px;
     width: 560px;
     padding: 10px;
