@@ -53,3 +53,10 @@ body {
 audio {
     display: none;
 }
+
+#teamName {
+    text-align: center;
+    font-family: 'Graduate', cursive;
+    font-size: 25px;
+    color: #fff;
+}

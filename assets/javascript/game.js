@@ -6,22 +6,22 @@ var wins = 0;
 
 function refreshHTML() {
     var html = "<p>Press any key to get started!</p>" +
-    "<br>" +
-    "<p>Wins" +
-    "<br>" +
-    wins + "</p>" +
-    "<br>" +
-    "<p>Current word" +
-    "<br>" +
-    answerArray.join("") + "</p>" +
-    "<br>" +
-    "<p>Number of guesses remaining" +
-    "<br>" +
-    remainingGuesses + "</p>" +
-    "<br>" +
-    "<p>Letters already guessed" +
-    "<br>" +
-    lettersGuessed + "</p>";
+        "<br>" +
+        "<p>Wins" +
+        "<br>" +
+        wins + "</p>" +
+        "<br>" +
+        "<p>Current word" +
+        "<br>" +
+        answerArray.join("") + "</p>" +
+        "<br>" +
+        "<p>Number of guesses remaining" +
+        "<br>" +
+        remainingGuesses + "</p>" +
+        "<br>" +
+        "<p>Letters already guessed" +
+        "<br>" +
+        lettersGuessed + "</p>";
     document.querySelector('#game').innerHTML = html;
 }
 
@@ -83,10 +83,10 @@ document.onkeyup = function () {
     //For winning
     if (remainingLetters === 0) {
         wins++;
-        document.getElementById("winning").play()
+        document.getElementById("winning").play();
         switch (targetWord) {
             case "TARHEELS":
-                document.getElementById("basePhoto").src = "assets/images/tarheels.jpg"
+                document.getElementById("basePhoto").src = "assets/images/tarheels.jpg";
                 break;
 
             case "BLUEDEVILS":
@@ -145,9 +145,69 @@ document.onkeyup = function () {
                 document.getElementById("basePhoto").src = "assets/images/yellowjackets.png"
                 break;
         }
+
+        switch (targetWord) {
+            case "TARHEELS":
+                document.getElementById("teamName").innerHTML = "<p>UNC Tar Heels!</p>"
+                break;
+
+            case "BLUEDEVILS":
+                document.getElementById("teamName").innerHTML = "<p>Duke Blue Devils!!</p>"
+                break;
+
+            case "CARDINALS":
+                document.getElementById("teamName").innerHTML = "<p>Louisville Cardinals!</p>"
+                break;
+
+            case "CAVALIERS":
+                document.getElementById("teamName").innerHTML = "<p>UVA Cavaliers!</p>"
+                break;
+
+            case "DEMONDEACONS":
+                document.getElementById("teamName").innerHTML = "<p>Wake Forest Demon Deacons!</p>"
+                break;
+
+            case "EAGLES":
+                document.getElementById("teamName").innerHTML = "<p>Boston College Eagles!</p>"
+                break;
+
+            case "FIGHTINGIRISH":
+                document.getElementById("teamName").innerHTML = "<p>Notre Dame Fighting Irish!</p>"
+                break;
+
+            case "HOKIES":
+                document.getElementById("teamName").innerHTML = "<p>Virginia Tech Hokies!</p>"
+                break;
+
+            case "HURRICANES":
+                document.getElementById("teamName").innerHTML = "<p>Miami Hurricanes!</p>"
+                break;
+
+            case "ORANGE":
+                document.getElementById("teamName").innerHTML = "<p>Syracuse Orange!</p>"
+                break;
+
+            case "PANTHERS":
+                document.getElementById("teamName").innerHTML = "<p>Pittsburgh Panthers!</p>"
+                break;
+
+            case "SEMINOLES":
+                document.getElementById("teamName").innerHTML = "<p>Florida State Seminoles!</p>"
+                break;
+
+            case "TIGERS":
+                document.getElementById("teamName").innerHTML = "<p>Clemson Tigers!</p>"
+                break;
+
+            case "WOLFPACK":
+                document.getElementById("teamName").innerHTML = "<p>NC State Wolfpack!</p>"
+                break;
+
+            case "YELLOWJACKETS":
+                document.getElementById("teamName").innerHTML = "<p>Georgia Tech Yellow Jackets!</p>"
+                break;
+        }
         resetGame();
     }
-
     refreshHTML();
 };
-
