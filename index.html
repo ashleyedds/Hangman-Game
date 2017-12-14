@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html>
-    <head>
 
-        <title>ACC Basketball Hangman</title>
+<head>
 
-        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
+    <title>ACC Basketball Hangman</title>
 
-    </head>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
 
-    <body>
-        <header>
+</head>
 
-            <img class="mainHeader" src="assets/images/main.png">
-            <img class="subHeader" src="assets/images/sub.png">
+<body>
+    <header>
 
-        </header>
+        <img class="mainHeader" src="assets/images/main.png">
+        <img class="subHeader" src="assets/images/sub.png">
 
-        <div class="wrapper">
+    </header>
+
+    <div class="wrapper">
 
         <div class="photos">
             <img id="basePhoto" src="assets/images/ACC.jpg">
         </div>
 
         <div id="game" class="gameContent">
-                <p>Press any key to get started!</p>
+            <p>Press any key to get started!</p>
 
-                <p>Wins</p>
+            <p>Wins</p>
 
-                <p id="win">Current word</p>
+            <p id="win">Current word</p>
 
-                <p>Number of guesses remaining</p> 
-                               
-                <p>Letters already guessed</p>
+            <p>Number of guesses remaining</p>
+
+            <p>Letters already guessed</p>
         </div>
 
+        <div id="sounds">
+            <audio id="winning" controls>
+                <source src="assets/sounds/swish.mp3" type="audio/mpeg">
+            </audio>
+            <audio id="losing" controls>
+                <source src="assets/sounds/buzzer.mp3" type="audio/mpeg">
+            </audio>
         </div>
+
+    </div>
 
     <script src="assets/javascript/game.js"></script>
-    </body>
+</body>
+
 </html>

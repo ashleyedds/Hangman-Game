@@ -49,3 +49,7 @@ body {
     width: 560px;
     padding: 10px;
 }
+
+audio {
+    display: none;
+}

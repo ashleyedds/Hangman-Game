@@ -13,7 +13,7 @@ for (var i = 0; i < targetWord.length; i++) {
 }
 
 //Resets game on win
-function resetGame (){
+function resetGame() {
     remainingGuesses = 10;
     lettersGuessed = [];
     answerArray = [];
@@ -69,6 +69,7 @@ document.onkeyup = function () {
 
     //For losing
     if (remainingGuesses === 0) {
+        document.getElementById("losing").play();
         alert("Too bad, you didn't get it this time.");
         window.location.reload();
     }
@@ -76,7 +77,7 @@ document.onkeyup = function () {
     //For winning
     if (remainingLetters === 0) {
         wins++;
-
+        document.getElementById("winning").play()
         switch (targetWord) {
             case "TARHEELS":
                 document.getElementById("basePhoto").src = "assets/images/tarheels.jpg"
