@@ -49,7 +49,8 @@ document.querySelector('#game').innerHTML = html;
 
 //Captures user's keypress
 document.onkeyup = function () {
-    var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
+    if (event.keyCode >= 65 && event.keyCode <= 90){
+        var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
     var correctGuess = false;
 
     for (var j = 0; j < targetWord.length; j++) {
@@ -65,6 +66,7 @@ document.onkeyup = function () {
         if (lettersGuessed.indexOf(userGuess) === -1) {
             lettersGuessed.push(userGuess);
         }
+    }
     }
 
     //For losing
