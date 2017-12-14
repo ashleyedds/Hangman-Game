@@ -4,6 +4,27 @@ var answerArray = [];
 var remainingGuesses = 10;
 var wins = 0;
 
+function refreshHTML() {
+    var html = "<p>Press any key to get started!</p>" +
+    "<br>" +
+    "<p>Wins" +
+    "<br>" +
+    wins + "</p>" +
+    "<br>" +
+    "<p>Current word" +
+    "<br>" +
+    answerArray.join("") + "</p>" +
+    "<br>" +
+    "<p>Number of guesses remaining" +
+    "<br>" +
+    remainingGuesses + "</p>" +
+    "<br>" +
+    "<p>Letters already guessed" +
+    "<br>" +
+    lettersGuessed + "</p>";
+    document.querySelector('#game').innerHTML = html;
+}
+
 //Generates random word from array
 var targetWord = wordList[Math.floor(Math.random() * wordList.length)];
 
@@ -28,45 +49,28 @@ console.log(targetWord);
 
 var remainingLetters = targetWord.length;
 
-//HTML display
-var html = "<p>Press any key to get started!</p>" +
-    "<br>" +
-    "<p>Wins" +
-    "<br>" +
-    wins + "</p>" +
-    "<br>" +
-    "<p id=>Current word" +
-    "<br>" +
-    answerArray.join("") + "</p>" +
-    "<br>" +
-    "<p>Number of guesses remaining" +
-    "<br>" +
-    remainingGuesses + "</p>" +
-    "<br>" +
-    "<p>Letters already guessed</p>"
-
-document.querySelector('#game').innerHTML = html;
+refreshHTML();
 
 //Captures user's keypress
 document.onkeyup = function () {
-    if (event.keyCode >= 65 && event.keyCode <= 90){
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
         var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
-    var correctGuess = false;
+        var correctGuess = false;
 
-    for (var j = 0; j < targetWord.length; j++) {
-        if (targetWord[j] === userGuess) {
-            answerArray[j] = userGuess;
-            remainingLetters--;
-            correctGuess = true;
+        for (var j = 0; j < targetWord.length; j++) {
+            if (targetWord[j] === userGuess) {
+                answerArray[j] = userGuess;
+                remainingLetters--;
+                correctGuess = true;
+            }
         }
-    }
 
-    if (correctGuess === false) {
-        remainingGuesses--;
-        if (lettersGuessed.indexOf(userGuess) === -1) {
-            lettersGuessed.push(userGuess);
+        if (correctGuess === false) {
+            remainingGuesses--;
+            if (lettersGuessed.indexOf(userGuess) === -1) {
+                lettersGuessed.push(userGuess);
+            }
         }
-    }
     }
 
     //For losing
@@ -144,25 +148,6 @@ document.onkeyup = function () {
         resetGame();
     }
 
-    //HTML display
-    var html = "<p>Press any key to get started!</p>" +
-        "<br>" +
-        "<p>Wins" +
-        "<br>" +
-        wins + "</p>" +
-        "<br>" +
-        "<p>Current word" +
-        "<br>" +
-        answerArray.join("") + "</p>" +
-        "<br>" +
-        "<p>Number of guesses remaining" +
-        "<br>" +
-        remainingGuesses + "</p>" +
-        "<br>" +
-        "<p>Letters already guessed" +
-        "<br>" +
-        lettersGuessed + "</p>"
-
-    document.querySelector('#game').innerHTML = html;
+    refreshHTML();
 };
 
